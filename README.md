@@ -1,7 +1,12 @@
-# Ionic Snippets
+1. [`Ionic Snippet`](#ionic-snippet)
+	- [`Chiamate temporizzate`](#chiamate-temporizzate)
+
+# [Ionic Snippets](#ionic-snippet)
+
 Lista di snippet di codice e tricks.
 
-## Chiamate temporizzate
+## [Chiamate temporizzate](#chiamate-temporizzate)
+
 - Call
     ```
    obs$ = (start: Date, stop: Date) => interval(1000).pipe(
@@ -21,15 +26,19 @@ Lista di snippet di codice e tricks.
     ```
 
 ## BUILD
+
 > **OCCHIO ALLE CLASSI PRIVATE**
 
 ### Android
+
     ionic capacitor build android --prod
 
 ### Browser
+
     ionic build --engine=browser --prod
 
 ### Start server con PHP
+
 La **porta** può essere qualsiasi.
 
 Locale:
@@ -39,13 +48,17 @@ Esterno:
     /c/xampp/php/php.exe -S 192.168.99.209:8000
 
 ## Live Reload
+
 ### Su ADV
+
     ionic capacitor run android -l --external
 
 ### Senza aprire una nuova finestra
+
     ionic serve --no-open
 
 ### Con Server aperto
+
 `--host`: opzionale.
 
     `ionic serve --external --host=192.168.99.209`
@@ -98,9 +111,11 @@ Aggiungere all'input:
         };
 
 ## Emettere solo un risultato
+
     this.authService.user.pipe(first()).subscribe((res) => {})
 
 ## Cambiare font all'intera applicazione
+
 In **variable.css**
 
     :root {
@@ -109,6 +124,7 @@ In **variable.css**
 	}
 
 ## Togliere menu da button con tasto destro
+
      this.pressBtn.nativeElement.oncontextmenu = function(event) {
     	  event.preventDefault();
     	  event.stopPropagation();
@@ -116,6 +132,7 @@ In **variable.css**
     	};
 		
 ## Funzione BackBtn()
+
 Salvo in localstorage le informazioni dinamiche dell'url per tornare indietro.
 
     backBtn(){
@@ -138,6 +155,7 @@ Da restApi creare una get per avere il base url.
     this.router.navigate([this.router.url + '/components']);
 
 ## Funzione per modificare un elemento e rispettivamente cambiare quello dopo
+
 ```
 let nextStep = false;
 this.singleOcir.list.forEach((task, index) => {
@@ -159,7 +177,36 @@ this.singleOcir.list.forEach((task, index) => {
 	}
 });
 ```
-#REGEX
+
+## Condividere un oggetto in tutta l'app
+
+```
+// BehaviorSubject è dove faccio il next a aggiorno i dati
+ _globalFarm: BehaviorSubject<Farm> = new BehaviorSubject<Farm>(null);
+// asObservable è dove faccio il subscribe per prendere i dati
+ globalFarm = this._globalFarm.asObservable();
+ ```
+ 
+ ##Ciclare nel .model
+ 
+```
+for(var key in data) {
+	this['_'+key] = data[key] ?? null;
+}
+```
+
+# UPDATE
+
+	ng update @angular/core @angular/cli --force
+	npm install @ionic/angular-toolkit@latest
+
+
+# REGEX
 
 ## Rimuovere spazi da una stringa
-    .replace(/\s/g, "")
+	.replace(/\s/g, "")
+    
+## Email
+	.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]
+	
+
