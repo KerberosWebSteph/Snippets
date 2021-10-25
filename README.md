@@ -1,5 +1,5 @@
-1. [`Ionic Snippet`](#ionic-snippet)
-	- [`Chiamate temporizzate`](#chiamate-temporizzate)
+1. [Ionic Snippet](#ionic-snippet)
+	- [Chiamate temporizzate](#chiamate-temporizzate)
 
 # [Ionic Snippets](#ionic-snippet)
 
