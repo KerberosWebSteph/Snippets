@@ -118,6 +118,7 @@ Aggiungere all'input:
 
 In **variable.css**
 
+    @import url(https://fonts.googleapis.com/css?family=Inter);
     :root {
      	--ion-font-family: 'Montserrat';
 		...
