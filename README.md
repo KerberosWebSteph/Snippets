@@ -137,15 +137,14 @@ In **variable.css**
 Salvo in localstorage le informazioni dinamiche dell'url per tornare indietro.
 
     backBtn(){
-        if(localStorage.getItem('qr_code') && localStorage.getItem('press_id')){
-          this.qr_code = localStorage.getItem('qr_code');
-          this.press_id = localStorage.getItem('press_id');
-          // this.router.navigate(['home','press', this.press_id,'pressgroup/', this.qr_code]);
-          return 'home/press/' + this.press_id;
-        } else {
-          // this.router.navigate(this.aidaService.home_url);
-          return this.aidaService.home_url;
-        }
+        if(this.device_id){
+	      return 'home/device/' + this.device_id;
+	} else if(localStorage.getItem(this.device_id)){
+	      this.device_id = localStorage.getItem(this.device_id);
+	      return 'home/device/' + this.device_id;
+	} else {
+	      return '/home';
+	}
     }	
 
 
