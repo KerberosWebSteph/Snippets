@@ -27,11 +27,40 @@ Lista di snippet di codice e tricks.
 
 ## BUILD
 
+### Android per DEBUG
+
+    ionic cap add android
+    ionic cap copy 
+    ionic cap sync
+    ionic cap open android
+
+Su Android Studio fare la Build per apk
+
 > **OCCHIO ALLE CLASSI PRIVATE**
 
-### Android
+### Android Prod
 
     ionic capacitor build android --prod
+    
+### Splashscreen e Icon
+
+    npm install -g cordova-res
+
+cordova-res expects a Cordova-like structure: place one icon and one splash screen file in a top-level resources folder within your project, like so:
+
+resources/
+├── icon.png
+└── splash.png
+Next, run the following to generate all images then copy them into the native projects:
+
+    cordova-res ios --skip-config --copy
+    cordova-res android --skip-config --copy
+
+
+**Oppure**
+res -> new -> Image Assets
+In android studio
+
 
 ### Browser
 
@@ -63,24 +92,6 @@ Esterno:
 
     `ionic serve --external --host=192.168.99.209`
 
-## Splashscreen e Icon
-
-    npm install -g cordova-res
-
-cordova-res expects a Cordova-like structure: place one icon and one splash screen file in a top-level resources folder within your project, like so:
-
-resources/
-├── icon.png
-└── splash.png
-Next, run the following to generate all images then copy them into the native projects:
-
-    cordova-res ios --skip-config --copy
-    cordova-res android --skip-config --copy
-
-
-**Oppure**
-res -> new -> Image Assets
-In android studio
 
 ## Login con enter
 
