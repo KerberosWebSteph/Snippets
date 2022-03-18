@@ -27,7 +27,8 @@ Lista di snippet di codice e tricks.
 
 ## BUILD
 
-### Android per DEBUG
+### Android 
+#### DEBUG
 
     ionic cap add android
     ionic cap copy 
@@ -38,7 +39,7 @@ Su Android Studio fare la Build per apk
 
 > **OCCHIO ALLE CLASSI PRIVATE**
 
-### Android Prod
+#### PROD
 
     ionic capacitor build android --prod
     
@@ -66,15 +67,48 @@ In android studio
 
     ionic build --engine=browser --prod
 
-### Start server con PHP
 
-La **porta** può essere qualsiasi.
+# GOOGLE AUTH API
 
-Locale:
-    /c/xampp/php/php.exe -S localhost:8000
+## DEBUG
 
-Esterno:
-    /c/xampp/php/php.exe -S 192.168.99.209:8000
+1. da [console.cloud.google.com](https://console.cloud.google.com/apis/credentials) creare nuove credenziali **_ID client OAuth_**
+	- Inserire localhost e localhost:8100
+	
+2. andare su Firebase e creare un'applicazione android
+	- nome pacchetto uguale ad applicazione
+	- creare uno SHA1 con il seguente comando
+	- **password: android**
+
+
+	```
+	keytool -list -v -alias androiddebugkey -keystore Users/KW03\.android\debug.keystore
+	```
+		
+3. Verrà creata anche su console.cloud.google.com
+
+4. Usare la chiave di OAuth creata nel punto 1) per autenticazione web e app.
+	- in index.html aggiunger 
+	```
+	<meta name="google-signin-client_id" content="<token OAuth>" />
+	```
+		
+	- Aggiungere in capacitor.json:
+	```
+	"GoogleAuth": {
+	  "scopes": ["profile","email"],
+	  "serverClientId": "<token OAuth>",
+	  "androidClientId": "<token OAuth>",
+	  "clientId": "<token OAuth>",
+	  "forceCodeForRefreshToken": true,
+	  "grantOfflineAccess": false
+	}
+	```
+	- in string.xml (android > app > src > main > res)
+	```
+	<string name="server_client_id"> <token OAuth> </string>
+	```
+
 
 ## Live Reload
 
@@ -205,6 +239,17 @@ for(var key in data) {
 	this['_'+key] = data[key] ?? null;
 }
 ```
+
+
+## Start server con PHP
+
+La **porta** può essere qualsiasi.
+
+Locale:
+    /c/xampp/php/php.exe -S localhost:8000
+
+Esterno:
+    /c/xampp/php/php.exe -S 192.168.99.209:8000
 
 # UPDATE
 
